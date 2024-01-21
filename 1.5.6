@@ -1,0 +1,15 @@
+#Factorial of N
+
+vector<long long> factorialNumbers(long long n) {
+    
+    vector<long long> result;
+    long long fact = 1;
+    int i=2;
+    while(fact<=n){
+        result.push_back(fact);
+        fact*=i;
+        i++;
+    }
+
+    return result;
+}

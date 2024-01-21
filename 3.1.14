@@ -1,0 +1,25 @@
+#include <bits/stdc++.h> 
+int getLongestSubarray(vector<int>& nums, int k){
+    map <long long, int> preSumMap;
+    long long sum = 0;
+    int len = 0;
+    int n= nums.size();
+    for(int i=0; i<n;i++){
+        sum += nums[i];
+        if(sum==k){
+            len = max(len, i+1);
+
+        }
+        long long rem = sum - k;
+        if(preSumMap.find(rem)!=preSumMap.end()){
+            int l = i - preSumMap[rem];
+            len = max(l, len);
+        }
+        if(preSumMap.find(sum)==preSumMap.end()){
+            preSumMap[sum] = i;
+
+        }
+
+    }
+    return len;
+}
